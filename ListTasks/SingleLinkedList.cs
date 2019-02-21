@@ -3,28 +3,16 @@ using System;
 
 namespace ListTasks
 {
-    class Elem
-    {
-        public string Info { get; set; }
-        public Elem Next { get; set; }
-    }
-
     class SingleLinkedList
     {
-        public Elem First { get; set; }
+        protected Elem First { get; set; }
+        protected int count;
 
         public int Length
         {
             get
             {
-                int k = 0;
-                var el = First;
-                while (el != null)
-                {
-                    k++;
-                    el = el.Next;
-                }
-                return k;
+                return count;
             }
         }
 
@@ -32,6 +20,7 @@ namespace ListTasks
         {
             var el = new Elem() { Info = x, Next = First };
             First = el;
+            count++;
         }
 
         public void AddLast(string x)
@@ -45,6 +34,7 @@ namespace ListTasks
             while (el.Next != null)
                 el = el.Next;
             el.Next = new Elem() { Info = x };
+            count++;
         }
 
         public bool IsOrdered()
@@ -76,5 +66,9 @@ namespace ListTasks
         }
     }
 
-    
+    protected class Elem
+    {
+        private string Info { get; set; }
+        private Elem Next { get; set; }
+    }
 }
