@@ -24,16 +24,16 @@ namespace ListTasks
             {
                 if (el1.Info.CompareTo(el2.Info) < 0)
                 {
-                    l3.AddLast(el1.Info);
+                    l3.AddLast(el1.Info); // n^2 time, would be better memorizing last element
                     el1 = el1.Next;
                 }
                 else
                 {
-                    l3.AddLast(el2.Info);
+                    l3.AddLast(el2.Info); // same here
                     el2 = el2.Next;
                 }
             }
-            if (el1 == null)
+            if (el1 == null) // can be folded into Elem e = el1 == null ? el2 : el1; while(e != null) {...}
                 while (el2 != null)
                 {
                     l3.AddLast(el2.Info);
